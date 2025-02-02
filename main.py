@@ -1,7 +1,7 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, Request
+from PIL import Image
 import shutil
 import os
-from PIL import Image
 
 app = FastAPI()
 
@@ -35,5 +35,5 @@ async def analyze_stain(file: UploadFile = File(...)):
 @app.post("/webhook")
 async def line_webhook(request: Request):
     body = await request.json()
-    print("收到 LINE Webhook:", body)  # 這行只是測試，後面要改成正確的處理方式
-    return {"message": "Webhook received"}  # 確保回應 200
+    print("收到 LINE Webhook:", body)
+    return {"message": "Webhook received"}
