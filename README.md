@@ -1,0 +1,1 @@
+# ch-laundry-api
