@@ -37,3 +37,8 @@ async def line_webhook(request: Request):
     body = await request.json()
     print("收到 LINE Webhook:", body)
     return {"message": "Webhook received"}
+
+# 讓 Fly.io 正確啟動 FastAPI
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
