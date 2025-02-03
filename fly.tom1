@@ -1,0 +1,21 @@
+app = "ch-laundry-api"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[build]
+image = "python:3.9"
+
+[deploy]
+release_command = "pip install -r requirements.txt"
+
+[env]
+PORT = "8080"
+
+[[services]]
+internal_port = 8080
+protocol = "tcp"
+
+[[services.ports]]
+handlers = ["http"]
+port = 80
