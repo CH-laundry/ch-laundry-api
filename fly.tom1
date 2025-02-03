@@ -4,13 +4,14 @@ kill_timeout = 5
 processes = []
 
 [build]
-image = "python:3.9"
+image = "python:3.10"
 
 [deploy]
 release_command = "pip install -r requirements.txt"
 
 [env]
 PORT = "8080"
+PYTHON_VERSION = "3.10"
 
 [[services]]
 internal_port = 8080
@@ -19,9 +20,3 @@ protocol = "tcp"
 [[services.ports]]
 handlers = ["http"]
 port = 80
-[build]
-builder = "paketobuildpacks/builder:base"
-buildpacks = ["paketo-buildpacks/python"]
-
-[env]
-PYTHON_VERSION = "3.10"
